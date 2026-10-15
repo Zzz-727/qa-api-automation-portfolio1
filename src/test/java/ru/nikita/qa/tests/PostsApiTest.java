@@ -137,4 +137,15 @@ class PostsApiTest {
         .then()
                 .statusCode(anyOf(is(200), is(204)));
     }
+    @Test
+    @DisplayName("GET /posts/9999: проверка несуществующего поста")
+    void getNonExistingPost() {
+        given()
+                .spec(requestSpec())
+                .pathParam("id", 9999)
+                .when()
+                .get("/posts/{id}")
+                .then()
+                .statusCode(404);
+    }
 }

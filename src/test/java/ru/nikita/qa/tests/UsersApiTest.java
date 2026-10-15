@@ -43,4 +43,16 @@ class UsersApiTest {
                 .body("id", everyItem(notNullValue()))
                 .body("name", everyItem(not(emptyOrNullString())));
     }
+
+    @Test
+    @DisplayName("GET /users/9999: несуществующий пользователь возвращает 404")
+    void getNonExistingUser() {
+        given()
+                .spec(requestSpec())
+                .pathParam("id", 9999)
+                .when()
+                .get("/users/{id}")
+                .then()
+                .statusCode(404);
+    }
 }

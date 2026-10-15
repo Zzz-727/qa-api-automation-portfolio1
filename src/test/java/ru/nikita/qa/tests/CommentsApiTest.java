@@ -28,4 +28,18 @@ class CommentsApiTest {
                 .body("postId", everyItem(equalTo(1)))
                 .body("email", everyItem(matchesRegex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")));
     }
+
+    @Test
+    @DisplayName("GET /comments?postId=9999: возвращает пустой список")
+    void getCommentsForNonExistingPost_returnsEmptyList() {
+        given()
+                .spec(requestSpec())
+                .queryParam("postId", 9999)
+                .when()
+                .get("/comments")
+                .then()
+                .statusCode(200)
+                .contentType(ContentType.JSON)
+                .body("size()", equalTo(0));
+    }
 }

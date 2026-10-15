@@ -1,3 +1,6 @@
+
+[![API Tests](https://github.com/Zzz-727/qa-api-automation-portfolio1/actions/workflows/maven-tests.yml/badge.svg)](https://github.com/Zzz-727/qa-api-automation-portfolio1/actions/workflows/maven-tests.yml)
+
 # QA API Automation Portfolio
 
 Automated REST API tests using Java, Rest Assured, JUnit 5, and Maven.
